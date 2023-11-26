@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Speaker extends Model
 {
     use HasFactory;
+
     protected $guarded = ['id'];
 
     public function course_schedule(): HasMany

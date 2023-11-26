@@ -9,7 +9,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class UserSubscriptionPayment extends Model
 {
     use HasFactory;
+
     protected $guarded = ['id'];
+
     public function user_subscription(): BelongsTo
     {
         return $this->belongsTo(UserSubscription::class);

@@ -10,12 +10,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class UserCoursePayment extends Model
 {
     use HasFactory;
-    protected  $guarded = ['id'];
+
+    protected $guarded = ['id'];
 
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
+
     public function payment_detail(): HasMany
     {
         return $this->hasMany(PaymentDetail::class);

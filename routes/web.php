@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\Dashboard\AdminDashboardController;
-use App\Http\Controllers\Subscription\LayananController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,12 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';
 
 Route::get('/', function () {
     return view('welcome');
 });
-Route::middleware(['auth'])->group(function (){
+Route::middleware(['auth'])->group(function () {
     Route::get('/home', [AdminDashboardController::class, 'index'])->name('home');
-    require __DIR__ . '/admin.php';
+    require __DIR__.'/admin.php';
 });

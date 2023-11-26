@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class QuizAnswer extends Model
 {
     use HasFactory;
+
     protected $guarded = ['id'];
 
     public function quiz(): BelongsTo

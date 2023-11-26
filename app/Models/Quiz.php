@@ -10,12 +10,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Quiz extends Model
 {
     use HasFactory;
+
     protected $guarded = ['id'];
 
     public function course(): BelongsTo
     {
         return $this->belongsTo(Course::class);
     }
+
     public function quiz_answer(): HasMany
     {
         return $this->hasMany(QuizAnswer::class);

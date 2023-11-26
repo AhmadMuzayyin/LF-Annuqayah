@@ -10,15 +10,19 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class UserSubscription extends Model
 {
     use HasFactory;
+
     protected $guarded = ['id'];
+
     public function subscription(): BelongsTo
     {
         return $this->belongsTo(Subcription::class);
     }
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
+
     public function user_subscription_payment(): HasMany
     {
         return $this->hasMany(UserSubscriptionPayment::class);

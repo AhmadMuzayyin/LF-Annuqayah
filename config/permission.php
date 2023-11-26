@@ -1,36 +1,36 @@
 <?php
 
 return [
-    'roles'=>[
+    'roles' => [
         'Admin',
         'Pengurus',
         'Anggota',
-        'Customer'
+        'Customer',
     ],
-    'courses'=>[
-        'course_categories' => ['Kategori','index', 'store', 'show', 'edit', 'update', 'destroy'],
+    'courses' => [
+        'course_categories' => ['Kategori', 'index', 'store', 'show', 'edit', 'update', 'destroy'],
         'courses' => ['Kursus', 'index', 'store', 'show', 'edit', 'update', 'destroy'],
-        'course_materials' => ['Materi Kursus','index', 'store', 'show', 'edit', 'update', 'destroy'],
+        'course_materials' => ['Materi Kursus', 'index', 'store', 'show', 'edit', 'update', 'destroy'],
         'speakers' => ['Speaker', 'index', 'store', 'show', 'edit', 'update', 'destroy'],
         'course_timetables' => ['Jadwal Kursus', 'index', 'store', 'show', 'edit', 'update', 'destroy'],
         'user_courses' => ['Pengguna Kursus', 'index', 'store', 'show', 'edit', 'update', 'destroy'],
         'course_payment_history' => ['Riwayat Pembayaran', 'index', 'store', 'show', 'edit', 'update', 'destroy'],
     ],
-    'quiz'=>[
+    'quiz' => [
         'quiz' => ['Kuis', 'index', 'store', 'show', 'edit', 'update', 'destroy'],
         'grading' => ['Penilaian', 'index', 'store', 'show', 'edit', 'update', 'destroy'],
     ],
-    'subscription'=>[
+    'subscription' => [
         'service' => ['Layanan', 'index', 'store', 'show', 'edit', 'update', 'destroy'],
         'user_subscription' => ['Pengguna Langganan', 'index', 'store', 'show', 'edit', 'update', 'destroy'],
         'subscription_payment_history' => ['Riwayat Pembayaran', 'index', 'store', 'show', 'edit', 'update', 'destroy'],
     ],
-    'utilities'=>[
+    'utilities' => [
         'users' => ['Pengguna', 'index', 'store', 'show', 'edit', 'update', 'destroy'],
         'roles' => ['Jabatan', 'index', 'store', 'show', 'edit', 'update', 'destroy'],
         'permission' => ['Hak Akses', 'index', 'store', 'show', 'edit', 'update', 'destroy'],
     ],
-    'setting'=>[
+    'setting' => [
         'website' => ['Website', 'index', 'store', 'show', 'edit', 'update', 'destroy'],
     ],
 

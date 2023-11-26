@@ -17,3 +17,5 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+/resources/stubs
+/app/Console/Commands/crud_generator.php

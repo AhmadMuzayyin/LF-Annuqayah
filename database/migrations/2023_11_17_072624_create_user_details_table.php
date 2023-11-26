@@ -1,9 +1,9 @@
 <?php
 
 use App\Models\User;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('phone');
             $table->string('birth_location');
             $table->date('birth_date');
-            $table->enum('gender',['Laki-Laki', 'Perempuan']);
+            $table->enum('gender', ['Laki-Laki', 'Perempuan']);
             $table->string('last_study');
             $table->string('current_job');
             $table->year('year_of_joining');
