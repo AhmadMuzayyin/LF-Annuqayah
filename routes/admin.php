@@ -12,19 +12,18 @@ use App\Http\Controllers\Quiz\QuizController;
 use App\Http\Controllers\Subscription\{LayananController};
 use Illuminate\Support\Facades\Route;
 
-Route::controller(LayananController::class)->as('subscription.')->group(function () {
-    Route::get('/layanan', 'index')->name('index');
-    Route::post('/layanan/store/{id}', 'store')->name('store');
-    Route::put('/layanan/update/{id}', 'update')->name('update');
-});
 Route::prefix('course/')->group(function () {
     Route::controller(CategoryController::class)->as('course_categories.')->group(function () {
         Route::get('category', 'index')->name('index');
+        Route::post('category/store', 'store')->name('store');
         Route::put('category/update/{course_category}', 'update')->name('update');
         Route::delete('category/destroy/{course_category}', 'destroy')->name('destroy');
     });
     Route::controller(CourseController::class)->as('courses.')->group(function () {
         Route::get('', 'index')->name('index');
+        Route::post('/store', 'store')->name('store');
+        Route::put('/update/{course}', 'update')->name('update');
+        Route::delete('/destroy/{course}', 'destroy')->name('destroy');
     });
     Route::controller(MaterialsController::class)->as('course_materials.')->group(function () {
         Route::get('materials', 'index')->name('index');
@@ -51,7 +50,7 @@ Route::prefix('quiz/')->group(function () {
     });
 });
 Route::prefix('subscription/')->group(function () {
-    Route::controller(QuizController::class)->as('service.')->group(function () {
+    Route::controller(LayananController::class)->as('service.')->group(function () {
         Route::get('services', 'index')->name('index');
     });
     Route::controller(GradeController::class)->as('user_subscription.')->group(function () {

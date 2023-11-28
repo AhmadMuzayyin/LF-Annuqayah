@@ -17,5 +17,5 @@
 
 
     <link rel="shortcut icon" href="{{ url('img/favicon.png') }}" type="image/x-icon">
-
+    @trixassets
 </head>

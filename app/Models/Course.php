@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Te7aHoudini\LaravelTrix\Traits\HasTrixRichText;
 
 class Course extends Model
 {
-    use HasFactory;
+    use HasFactory, HasTrixRichText;
 
     protected $guarded = ['id'];
 
@@ -36,5 +37,14 @@ class Course extends Model
     public function user_course_payment(): HasMany
     {
         return $this->hasMany(UserCoursePayment::class);
+    }
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleted(function ($post) {
+            $post->trixRichText->each->delete();
+            $post->trixAttachments->each->purge();
+        });
     }
 }

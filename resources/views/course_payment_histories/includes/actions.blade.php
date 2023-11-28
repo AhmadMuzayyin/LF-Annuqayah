@@ -20,7 +20,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="detailModalLabel">Detail Course {{ $model->course_category }}</h5>
+                <h5 class="modal-title" id="detailModalLabel">Detail course_payment_histories {{ $model->course_category }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -44,12 +44,12 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editModalLabel">Edit Course {{ $model->course_category }}</h5>
+                <h5 class="modal-title" id="editModalLabel">Edit course_payment_histories {{ $model->course_category }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{ route('Course.update', $model) }}" method="post">
+            <form action="{{ route('course_payment_histories.update', $model) }}" method="post">
                 @csrf
                 @method('put')
                 <div class="modal-body">
@@ -83,7 +83,7 @@
             <div class="modal-body">
                 Are you sure you want to delete this item?
             </div>
-            <form action="{{ route('Course.destroy', $model) }}" method="post">
+            <form action="{{ route('course_payment_histories.destroy', $model) }}" method="post">
                 @csrf
                 @method('delete')
                 <div class="modal-footer">

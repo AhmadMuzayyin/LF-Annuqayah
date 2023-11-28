@@ -65,9 +65,11 @@ class CategoryController extends Controller
         try {
             CourseCategory::create($request->all());
 
-            return redirect()->back()->with('success', 'Course Category Created');
+            toast('Course Category has been created!','success');
+            return redirect()->back();
         } catch (\Throwable $th) {
-            return redirect()->back()->with('error', 'Course Category Failed to Create');
+            toast('Course Category failed to create!','error');
+            return redirect()->back();
         }
     }
 
@@ -76,9 +78,11 @@ class CategoryController extends Controller
         try {
             $course_category->update($request->all());
 
-            return redirect()->back()->with('success', 'Course Category Updated');
+            toast('Course Category has been updated!','success');
+            return redirect()->back();
         } catch (\Throwable $th) {
-            return redirect()->back()->with('error', 'Course Category Failed to Update');
+            toast('Course Category failed to update!','error');
+            return redirect()->back();
         }
     }
 
@@ -87,9 +91,11 @@ class CategoryController extends Controller
         try {
             $course_category->delete();
 
-            return redirect()->back()->with('success', 'Course Category Deleted');
+            toast('Course Category has been deleted!','success');
+            return redirect()->back();
         } catch (\Throwable $th) {
-            return redirect()->back()->with('error', 'Course Category Failed to Delete');
+            toast('Course Category failed to delete!','error');
+            return redirect()->back();
         }
     }
 }

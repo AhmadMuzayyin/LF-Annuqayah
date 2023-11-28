@@ -18,9 +18,8 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('title');
             $table->string('thumbnail');
-            $table->text('description');
             $table->enum('type', ['Online', 'Offline'])->default('Offline');
-            $table->decimal('price');
+            $table->decimal('price')->nullable();
             $table->timestamps();
         });
     }
