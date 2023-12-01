@@ -41,7 +41,7 @@
             </x-input-select>
             <x-input-basic name="price" label="Harga" type="number"></x-input-basic>
             <div class="form-group">
-                @trix(\App\Models\Course::class, 'content')
+                @trix(\app\Models\Course::class, 'content')
             </div>
         </x-form-modal>
     </x-modal-scroll>
