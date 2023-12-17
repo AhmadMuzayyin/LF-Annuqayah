@@ -36,12 +36,12 @@
             <x-input-file name="thumbnail" label="Thumbnail"></x-input-file>
             <x-input-select name="type">
                 <option value="" selected disabled>Pilih Jenis Kursus</option>
-                <option value="Online" {{ (old('type') == 'Online' ? 'selected' : '') }}>Online</option>
-                <option value="Offline" {{ (old('type') == 'Offline' ? 'selected' : '') }}>Offline</option>
+                <option value="Online" {{ old('type') == 'Online' ? 'selected' : '' }}>Online</option>
+                <option value="Offline" {{ old('type') == 'Offline' ? 'selected' : '' }}>Offline</option>
             </x-input-select>
             <x-input-basic name="price" label="Harga" type="number"></x-input-basic>
             <div class="form-group">
-                @trix(\app\Models\Course::class, 'content')
+                @trix(\App\Models\Course::class, 'content')
             </div>
         </x-form-modal>
     </x-modal-scroll>

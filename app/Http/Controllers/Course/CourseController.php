@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use Yajra\DataTables\Facades\DataTables;
 use App\Http\Requests\CourseStoreRequest;
 use App\Http\Requests\CourseUpdateRequest;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class CourseController extends Controller
 {
@@ -66,19 +68,29 @@ class CourseController extends Controller
     public function store(CourseStoreRequest $request)
     {
         try {
+            DB::beginTransaction();
             $validate = $request->validated();
             $validate['thumbnail'] = request()->file('thumbnail')->store('uploads/course/thumbnail', 'public');
             $validate['slug'] = Str::slug($request->title);
             $validate['course-trixFields'] = request('course-trixFields');
             $validate['attachment-course-trixFields'] = request('attachment-course-trixFields');
-            // dd($validate);
-            Course::create($validate);
-
-            toast('Course Category has been created!','success');
+            Course::create([
+                'course_category_id' => $validate['course_category_id'],
+                'title' => $validate['title'],
+                'slug' => $validate['slug'],
+                'type' => $validate['type'],
+                'price' => $validate['price'],
+                'thumbnail' => $validate['thumbnail'],
+                'course-trixFields' => $validate['course-trixFields'],
+                'attachment-course-trixFields' => $validate['attachment-course-trixFields'],
+            ]);
+            DB::commit();
+            toast('Course Category has been created!', 'success');
             return redirect()->back();
         } catch (\Throwable $th) {
             dd($th->getMessage());
-            toast('Course Category failed to create!','error');
+            DB::rollback();
+            toast('Course Category failed to create!', 'error');
             return redirect()->back();
         }
     }
@@ -86,12 +98,19 @@ class CourseController extends Controller
     public function update(Course $course_category, CourseUpdateRequest $request)
     {
         try {
-            $course_category->update($request->all());
+            if ($request->hasFile('thumbnail')) {
+                $request->validate([
+                    'thumbnail' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                ]);
+                $course_category->thumbnail = request()->file('thumbnail')->store('uploads/course/thumbnail', 'public');
+            }
+            $validate = $request->validated();
+            $course_category->update($validate);
 
-            toast('Course Category has been updated!','success');
+            toast('Course Category has been updated!', 'success');
             return redirect()->back();
         } catch (\Throwable $th) {
-            toast('Course Category failed to update!','error');
+            toast('Course Category failed to update!', 'error');
             return redirect()->back();
         }
     }
@@ -99,12 +118,13 @@ class CourseController extends Controller
     public function destroy(Course $course)
     {
         try {
+            $filename = $course->thumbnail;
             $course->delete();
-
-            toast('Course Category has been deleted!','success');
+            Storage::disk('public')->delete($filename);
+            toast('Course Category has been deleted!', 'success');
             return redirect()->back();
         } catch (\Throwable $th) {
-            toast('Course Category failed to delete!','error');
+            toast('Course Category failed to delete!', 'error');
             return redirect()->back();
         }
     }

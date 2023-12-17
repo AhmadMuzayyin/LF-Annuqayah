@@ -50,8 +50,8 @@
         <x-input-basic name="slug" type="text" label="SLug" value="{{ $model->slug }}"
             readonly></x-input-basic>
         <x-input-basic name="title" type="text" label="Title" value="{{ $model->title }}"></x-input-basic>
-        <img src="{{ url('/storage', $model->thumbnail) }}" alt="{{ $model->thumbnail }}"
-            class="img-thumbnail mb-2" width="300">
+        <img src="{{ url('/storage', $model->thumbnail) }}" alt="{{ $model->thumbnail }}" class="img-thumbnail mb-2"
+            width="300">
         <x-input-file name="thumbnail" label="Thumbnail"></x-input-file>
         <x-input-select name="type">
             <option value="" selected disabled>Pilih Jenis Kursus</option>
@@ -63,38 +63,38 @@
             @trix($model, 'content')
         </div>
     </x-form-modal>
-</x-modal-sc>
+    </x-modal-sc>
 
-<!-- Delete Modal -->
-<div class="modal fade" id="deleteModal-{{ $model->id }}" tabindex="-1" role="dialog"
-    aria-labelledby="deleteModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="deleteModalLabel">Delete Kursus {{ $model->title }}</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                Are you sure you want to delete this item?
-            </div>
-            <form action="{{ route('courses.destroy', $model) }}" method="post">
-                @csrf
-                @method('delete')
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-danger">Delete</button>
+    <!-- Delete Modal -->
+    <div class="modal fade" id="deleteModal-{{ $model->id }}" tabindex="-1" role="dialog"
+        aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Delete Kursus {{ $model->title }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-            </form>
+                <div class="modal-body">
+                    Are you sure you want to delete this item?
+                </div>
+                <form action="{{ route('courses.destroy', $model) }}" method="post">
+                    @csrf
+                    @method('delete')
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-danger" id="delete-button">Delete</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
-@push('scripts')
-    <script>
-        $(document).ready(function() {
-            $(".trix-button--icon-attach").remove();
-            $(".trix-button-group--file-tools").remove();
-        });
-    </script>
-@endpush
+    @push('scripts')
+        <script>
+            $(document).ready(function() {
+                $(".trix-button--icon-attach").remove();
+                $(".trix-button-group--file-tools").remove();
+            });
+        </script>
+    @endpush

@@ -11,7 +11,7 @@ class CourseUpdateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class CourseUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'course_category_id' => 'required|exists:course_categories,id,' . $this->course->id,
+            'title' => 'required|min:5|max:100',
+            'type' => 'required|in:Online,Offline',
+            'price' => 'required|numeric',
         ];
     }
 }

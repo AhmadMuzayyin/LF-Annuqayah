@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('thumbnail');
             $table->enum('type', ['Online', 'Offline'])->default('Offline');
-            $table->decimal('price')->nullable();
+            $table->bigInteger('price')->nullable();
             $table->timestamps();
         });
     }
